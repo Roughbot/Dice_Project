@@ -17,12 +17,12 @@ function roll() {
         dice.forEach(function(die){
             die.classList.remove("shake");
         });
-        let dice1 = math.floor(Math.random()*6);
-        let dice2 = math.floor(Math.random()*6);
+        let dice1 = Math.floor(Math.random()*6);
+        let dice2 = Math.floor(Math.random()*6);
         console.log(dice1,dice2);
         document.querySelector("#D1").setAttribute("src", "images/" + images[dice1]);
         document.querySelector("#D2").setAttribute("src", "images/" + images[dice2]);
-        document.querySelector("#sum").innerHTML = ((dice1 + 1) + (dice2 + 1));
+        document.querySelector("#sum").innerHTML = "Your Roll " + ((dice1 + 1) + (dice2 + 1));
     },
         1000 
     );
