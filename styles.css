@@ -1,0 +1,269 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    background: linear-gradient(
+        #42f5a4,
+        #42f5ef
+    ) 0 100% no-repeat;
+    background-size: 100% 50%;
+}
+img{
+    width: 150px;
+    height: auto;
+}
+
+.container{
+    width: 30%;
+    padding: 50px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    background-color: #ffffff;
+    box-shadow: 0 15px 25px rgba(50,50,50,0.15);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Poppins",sans-serif;
+}
+.dice-area{
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 0;
+}
+p{
+    font-size: 16px;
+    margin: 30px 0;
+    font-weight: 500;
+}
+button{
+    background-color: #e92e3d;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    padding: 15px 0;
+    width: 150px;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.shake{
+    animation: shake 0.5s infinite;
+}
+@keyframes shake{
+    0%{
+        transform: rotate(8deg);
+    }
+    50%{
+        transform: rotate(-8deg);
+    }
+    100%{
+        transform: rotate(8deg);
+    }
+}
+
+.canvas {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: linear-gradient(-15deg, purple, black);
+  }
+  
+  :root {
+    --dice-size: 200px;
+    --dice-color: #8c00fc;
+    --dice-middle: calc(var(--dice-size) / 2);
+    --dice-middle-shif: calc(var(--dice-middle) * -1);
+    --dice-dot-size: calc(var(--dice-size) / 15);
+    --dice-shadow-color: #3500ff;
+  }
+  
+  .dice-container {
+    position: relative;
+    perspective: calc(var(--dice-size) * 3);
+  }
+  
+  .dice {
+    position: relative;
+    width: var(--dice-size);
+    height: var(--dice-size);
+    transform-style: preserve-3d;
+    transform: rotate3d(1, 1, 1, 75deg);
+    transform-origin: 50% 50%;
+    animation: dice-rotation 8s infinite linear;
+  }
+  
+  @keyframes dice-rotation {
+    0% {
+      transform: rotate3d(1, 1, 1, 0deg);
+    }
+    100% {
+      transform: rotate3d(0.75, 1, 0.25, 360deg);
+    }
+  }
+  
+  .dice__side {
+    --offset: calc(var(--dice-size) / 20);
+  
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    /*backface-visibility: hidden;*/
+  
+    filter: drop-shadow(0 0 calc(var(--dice-size) / 20) var(--dice-shadow-color));
+  }
+  
+  .dice__side::before {
+    content: "";
+    position: absolute;
+    inset: var(--offset);
+    border: calc(var(--dice-size) / 100) solid var(--dice-color);
+    border-radius: calc(var(--dice-size) / 10);
+  }
+  
+  .dice__side_1 {
+    transform: translateZ(var(--dice-middle));
+  
+    background: radial-gradient(
+      circle at 50% 50%,
+      var(--dice-color) var(--dice-dot-size),
+      transparent calc(var(--dice-dot-size) + 1px)
+    );
+  }
+  
+  .dice__side_2 {
+    transform: translateX(var(--dice-middle)) rotateY(90deg);
+  
+    background: radial-gradient(
+        circle at 30% 70%,
+        var(--dice-color) var(--dice-dot-size),
+        transparent calc(var(--dice-dot-size) + 1px)
+      ),
+      radial-gradient(
+        circle at 70% 30%,
+        var(--dice-color) var(--dice-dot-size),
+        transparent calc(var(--dice-dot-size) + 1px)
+      );
+  }
+  
+  .dice__side_3 {
+    transform: translateY(var(--dice-middle)) rotateX(-90deg);
+  
+    background: radial-gradient(
+        circle at 75% 25%,
+        var(--dice-color) var(--dice-dot-size),
+        transparent calc(var(--dice-dot-size) + 1px)
+      ),
+      radial-gradient(
+        circle at 50% 50%,
+        var(--dice-color) var(--dice-dot-size),
+        transparent calc(var(--dice-dot-size) + 1px)
+      ),
+      radial-gradient(
+        circle at 25% 75%,
+        var(--dice-color) var(--dice-dot-size),
+        transparent calc(var(--dice-dot-size) + 1px)
+      );
+  }
+  
+  .dice__side_4 {
+    transform: translateY(var(--dice-middle-shif)) rotateX(90deg);
+  
+    background: radial-gradient(
+        circle at 30% 30%,
+        var(--dice-color) var(--dice-dot-size),
+        transparent calc(var(--dice-dot-size) + 1px)
+      ),
+      radial-gradient(
+        circle at 70% 30%,
+        var(--dice-color) var(--dice-dot-size),
+        transparent calc(var(--dice-dot-size) + 1px)
+      ),
+      radial-gradient(
+        circle at 30% 70%,
+        var(--dice-color) var(--dice-dot-size),
+        transparent calc(var(--dice-dot-size) + 1px)
+      ),
+      radial-gradient(
+        circle at 70% 70%,
+        var(--dice-color) var(--dice-dot-size),
+        transparent calc(var(--dice-dot-size) + 1px)
+      );
+  }
+  
+  .dice__side_5 {
+    transform: translateX(var(--dice-middle-shif)) rotateY(-90deg);
+  
+    background: radial-gradient(
+        circle at 25% 25%,
+        var(--dice-color) var(--dice-dot-size),
+        transparent calc(var(--dice-dot-size) + 1px)
+      ),
+      radial-gradient(
+        circle at 75% 25%,
+        var(--dice-color) var(--dice-dot-size),
+        transparent calc(var(--dice-dot-size) + 1px)
+      ),
+      radial-gradient(
+        circle at 50% 50%,
+        var(--dice-color) var(--dice-dot-size),
+        transparent calc(var(--dice-dot-size) + 1px)
+      ),
+      radial-gradient(
+        circle at 25% 75%,
+        var(--dice-color) var(--dice-dot-size),
+        transparent calc(var(--dice-dot-size) + 1px)
+      ),
+      radial-gradient(
+        circle at 75% 75%,
+        var(--dice-color) var(--dice-dot-size),
+        transparent calc(var(--dice-dot-size) + 1px)
+      );
+  }
+  
+  .dice__side_6 {
+    transform: translateZ(var(--dice-middle-shif)) rotateY(-180deg);
+  
+    background: radial-gradient(
+        circle at 25% 25%,
+        var(--dice-color) var(--dice-dot-size),
+        transparent calc(var(--dice-dot-size) + 1px)
+      ),
+      radial-gradient(
+        circle at 75% 25%,
+        var(--dice-color) var(--dice-dot-size),
+        transparent calc(var(--dice-dot-size) + 1px)
+      ),
+      radial-gradient(
+        circle at 25% 50%,
+        var(--dice-color) var(--dice-dot-size),
+        transparent calc(var(--dice-dot-size) + 1px)
+      ),
+      radial-gradient(
+        circle at 75% 50%,
+        var(--dice-color) var(--dice-dot-size),
+        transparent calc(var(--dice-dot-size) + 1px)
+      ),
+      radial-gradient(
+        circle at 25% 75%,
+        var(--dice-color) var(--dice-dot-size),
+        transparent calc(var(--dice-dot-size) + 1px)
+      ),
+      radial-gradient(
+        circle at 75% 75%,
+        var(--dice-color) var(--dice-dot-size),
+        transparent calc(var(--dice-dot-size) + 1px)
+      );
+  }
+  
+  
