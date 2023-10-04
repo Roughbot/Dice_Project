@@ -19,7 +19,7 @@ function roll() {
         });
         let dice1 = Math.floor(Math.random()*6);
         let dice2 = Math.floor(Math.random()*6);
-        console.log(dice1,dice2);
+        
         document.querySelector("#D1").setAttribute("src", "images/" + images[dice1]);
         document.querySelector("#D2").setAttribute("src", "images/" + images[dice2]);
         document.querySelector("#sum").innerHTML = "Your Roll " + ((dice1 + 1) + (dice2 + 1));
